@@ -38,8 +38,69 @@ pip install torch torchvision torchaudio Pillow transformers open3d matplotlib
 
 1. **Clone the repository:**
 ```
-git clone <repository_url>
+git clone https://github.com/nikhilgrad/3D-Reconstruction.git
 
 ```
 
-2. 
+2. Place your input image in the same directory as the script. You can change the image path in the script if needed.
+
+3. **Run the Python script:**
+```
+python 3D_Reconstruction.ipynb
+```
+
+4. **Output:**
+   
+* `pointclouds/heartpcd.ply`: The processed point cloud in PLY format.
+* `mesh/heartmesh.obj`: The reconstructed 3D mesh in OBJ format.
+
+These files can be viewed using various 3D viewers like MeshLab, CloudCompare, Blender or any other online viewers.
+
+## Code Explanation
+
+The code is structured in steps which is expalined as follows:
+
+* **Dependencies Installation:** Installs necessary Python libraries.
+* **Model Loading:** Loads the pre-trained depth estimation model.
+* **Image Loading and Preprocessing:** Loads and resizes the input image.
+* **Depth Prediction:** Generates the depth map using the model.
+* **Depth Map Post-processing:** Refines the depth map.
+* **Visualization:** Displays the original image and the depth map.
+* **Point Cloud Creation and Post-processing:** Creates and refines the 3D point cloud.
+* **Mesh Reconstruction:** Generates the 3D mesh from the point cloud.
+* **Saving Outputs:** Saves the point cloud and mesh to files.
+
+## Important Notes
+
+* **Cloud Platforms (e.g., Google Colab):** Direct visualization using `o3d.visualization.draw_geometries` is not supported on cloud platforms. The script is modified to save the point cloud and mesh to files, which can then be downloaded and viewed locally.
+  
+* **Image Size:** The script resizes the input image to a size divisible by 32 for compatibility with the depth estimation model.
+  
+* **Output Formats:** The point cloud is saved in PLY format, and the mesh is saved in OBJ format. These are common 3D file formats that can be opened by various 3D viewing software.
+  
+* **Depth Parameter in Poisson Reconstruction:** The depth parameter in `o3d.geometry.TriangleMesh.create_from_point_cloud_poisson` controls the level of detail in the mesh. You can adjust this value for different results.
+
+## Example
+An example input image (Heart.jpg) is expected in the same directory as the script. The output will be the corresponding point cloud (heartpcd.ply) and mesh (heartmesh.obj).
+
+## License
+
+MIT License
+
+## Acknowledgements
+
+* Intel for the pre-trained DPT model.
+  
+* Hugging Face for hosting the model.
+  
+* Open3D for the powerful 3D processing library
+
+
+
+
+
+
+
+
+
+
