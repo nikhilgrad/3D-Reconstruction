@@ -5,7 +5,7 @@ This project demonstrates a complete pipeline on how to reconstruct a 3D model f
 
 https://github.com/user-attachments/assets/0f375271-4395-43a3-bfc4-43922e2acc2a
 
-*3D Reconstruction - 2D Image (Left), 3D Point-Cloud (Below), 3D Mesh (Top)*
+*3D Reconstruction - 2D Image (Left), 3D Point-Cloud (Top-Right), 3D Mesh (Bottom-Right)*
 
 
 ## Overview
@@ -13,9 +13,27 @@ https://github.com/user-attachments/assets/0f375271-4395-43a3-bfc4-43922e2acc2a
 The process involves the following steps:
 
 1.  **Depth Estimation:** A pre-trained depth estimation model (Intel/dpt-hybrid-midas) predicts a depth map from the input image.
+
+![Depth_image](https://github.com/user-attachments/assets/e3965f5d-b36e-40fa-ac0e-9b218f1c93fc)
+
+*Depth Estimation Output*
+
+  
 2.  **Point Cloud Generation:** The depth map is converted into a 3D point cloud using camera intrinsics.
+
 3.  **Point Cloud Post-processing:** Outlier removal and normal estimation are performed to refine the point cloud.
+
+https://github.com/user-attachments/assets/7de8d71b-c415-445e-aa91-035e269af009
+
+*3D Point-Cloud Generated after Post-processing*
+
+
 4.  **Mesh Reconstruction:** Poisson surface reconstruction is used to create a 3D mesh from the point cloud.
+
+https://github.com/user-attachments/assets/a4615548-7481-436d-9b3f-b20abe656872
+
+*3D Mesh Reconstruction Output*
+
 
 ## Requirements
 
